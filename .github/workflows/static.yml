@@ -33,19 +33,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Install Quarto
+      - name: Setup quarto
+        uses: quarto-dev/quarto-actions/setup@v2
         run: |
-          sudo curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
-          sudo apt-get install gdebi-core
-          sudo gdebi quarto-linux-amd64.deb
-          /usr/local/bin/quarto check
-          which quarto
+            quarto --version
       - name: Build HTML
         run: quarto render src --output-dir ../output
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: 'output'
       - name: Deploy to GitHub Pages
         id: deployment
