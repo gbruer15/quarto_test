@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Install Quarto
-        run: sudo snap install quarto
+        run: sudo apt install quarto
       - name: Build HTML
         run: quarto render src --output-dir ../output
       - name: Upload artifact
